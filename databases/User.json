@@ -1,0 +1,11 @@
+[
+  {
+    "_id": 1,
+    "username": "jorge geraldo",
+    "bots": [
+      {
+        "name": "test"
+      }
+    ]
+  }
+]
