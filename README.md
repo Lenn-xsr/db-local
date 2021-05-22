@@ -15,17 +15,17 @@ const { Schema } = new Database({ path: "./databases" });
 /*
 Schema(<MODEL NAME required>, <BASE MODEL>)
 
- - Examples of how a property can be set in the BASE MODEL
+Example of how a property can be set in the BASE MODEL
 
 {
-    property: { 
-        type: < Number | String | Array | Object >, 
-        required: < false | true >, 
-        default: < Something standard according to the type of the property >
-    }
+  property: { 
+    type: < Number | String | Array | Object >, 
+    required: < false | true >, 
+    default: < Something standard according to the type of the property >
+  }
 }
 
- - Obs.: "_id" is always required <with type Number or String>, without it there is no way to search.
+Obs.: "_id" is always required <with type Number or String>, without it there is no way to search.
 */
 
 const User = Schema("User", {
@@ -48,7 +48,7 @@ const userFound = User.find({ _id: 1 });
 
 if (!userFound) User.create({ _id: 1, username: "test" }).save();
 
-console.log(userFound.data);
+console.log(userFound);
 ```
 
 #### Methods for updating or deleting a document

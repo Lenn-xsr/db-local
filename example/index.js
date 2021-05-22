@@ -1,9 +1,7 @@
 const { User } = require("./schemas.js");
 
-const userFound = User.find({ _id: 1 });
+const user = User.find({ _id: 2 });
 
-if (!userFound) User.create({ _id: 1, username: "teste" }).save();
+if (!user) User.create({ _id: 2, username: "teste" }).save();
 
-// Update a user's information using find
-
-userFound.update({ username: "jorge" }).save();
+console.log(user);

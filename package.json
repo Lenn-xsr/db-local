@@ -3,6 +3,12 @@
   "version": "1.0.1",
   "main": "index.js",
   "repository": "https://github.com/lenn-xsr/local-db",
+  "scripts": {
+    "dev": "nodemon ./example/index.js --ignore './databases/*'"
+  },
   "author": "Lennart",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
 }

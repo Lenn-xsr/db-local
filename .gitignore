@@ -2,7 +2,7 @@
 /node_modules
 yarn.lock
 
-/lib/databases/*
+/databases
 
 # Log files
 npm-debug.log*
