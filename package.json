@@ -1,11 +1,8 @@
 {
   "name": "local-db",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "index.js",
   "repository": "https://github.com/lenn-xsr/local-db",
   "author": "Lennart",
-  "license": "MIT",
-  "dependencies": {
-    "edit-json-file": "^1.5.0"
-  }
+  "license": "MIT"
 }
