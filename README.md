@@ -14,8 +14,8 @@ npm install db-local
 ## How to use
 
 ```js
-const dbLocal = require("../lib");
-const { Schema } = new dbLocal({ path: "./databases", pack: true });
+const dbLocal = require("db-local");
+const { Schema } = new dbLocal({ path: "./databases", compress: true });
 
 const User = Schema("User", {
   _id: { type: Number },
