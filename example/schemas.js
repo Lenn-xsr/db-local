@@ -1,5 +1,5 @@
 const LocalDB = require("../lib");
-const { Schema } = new LocalDB({ path: "./databases" });
+const { Schema } = new LocalDB({ path: "./databases", pack: true });
 
 const User = Schema("User", {
   _id: { type: Number, required: false },
