@@ -1,7 +1,13 @@
-const { User } = require("./schemas.js");
+const dbLocal = require("db-local");
+const { Schema } = new dbLocal({ path: "./databases", compress: true });
 
-const user = User.find({ _id: 2 });
+const User = Schema("User", {
+  _id: { type: Number },
+  username: { type: String, required: true },
+  bots: { type: Array, default: [{ name: "test" }] },
+});
 
-if (!user) User.create({ _id: 2, username: "teste" }).save();
+let user = User.find({ _id: 1 });
+if (!user) User.create({ _id: 1, username: "test" }).save();
 
 console.log(user);

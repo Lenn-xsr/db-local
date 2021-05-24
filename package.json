@@ -1,13 +1,13 @@
 {
-  "name": "local-db",
-  "version": "1.0.2",
+  "name": "db-local",
+  "version": "1.0.7",
   "description": "Local database using JSON to store data.",
   "license": "MIT",
   "author": "Lennart",
   "main": "./lib/index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/lenn-xsr/local-db.git"
+    "url": "git+https://github.com/lenn-xsr/db-local.git"
   },
   "keywords": [
     "local",
@@ -16,9 +16,9 @@
     "json"
   ],
   "bugs": {
-    "url": "https://github.com/lenn-xsr/local-db/issues"
+    "url": "https://github.com/lenn-xsr/db-local/issues"
   },
-  "homepage": "https://github.com/lenn-xsr/local-db#readme",
+  "homepage": "https://github.com/lenn-xsr/db-local#readme",
   "dependencies": {
     "jsonpack": "^1.1.5"
   }
