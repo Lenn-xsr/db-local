@@ -23,8 +23,8 @@ const User = Schema("User", {
   bots: { type: Array, default: [{ name: "test" }] },
 });
 
-const user = User.find({ _id: 2 });
-if (!user) User.create({ _id: 2, username: "test" }).save();
+let user = User.find({ _id: 2 });
+if (!user) user = User.create({ _id: 2, username: "test" }).save();
 
 console.log(user); // { _id: 2, username: "test", bots: [ { name: "test" } ] }
 ```
