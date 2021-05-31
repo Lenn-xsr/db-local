@@ -15,7 +15,7 @@ npm install db-local
 
 ```js
 const dbLocal = require("db-local");
-const { Schema } = new dbLocal({ path: "./databases", compress: true });
+const { Schema } = new dbLocal({ path: "./databases" });
 
 const User = Schema("User", {
   _id: { type: Number },
@@ -29,9 +29,10 @@ if (!user) user = User.create({ _id: 1, username: "lennart" }).save();
 
 console.log(user);
 // {
-//   data: { _id: 1, username: "lennart" },
+//   data: { _id: 1, username: "lennart", bots: [ { name: "test" } ] },
 //   update: [Function: update],
-//   remove: [Function: remove]
+//   remove: [Function: remove],
+//   save: [Function: save]
 // }
 ```
 

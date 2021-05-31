@@ -1,5 +1,5 @@
 const dbLocal = require("../lib/index.js");
-const { Schema } = new dbLocal({ path: "./databases", compress: false });
+const { Schema } = new dbLocal({ path: "./databases" });
 
 const User = Schema("User", {
   _id: { type: Number },
