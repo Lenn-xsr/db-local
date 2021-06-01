@@ -14,20 +14,20 @@ npm install db-local
 ## How to use
 
 ```js
-const dbLocal = require("db-local");
-const { Schema } = new dbLocal({ path: "./databases" });
+const dbLocal = require("db-local")
+const { Schema } = new dbLocal({ path: "./databases" })
 
 const User = Schema("User", {
   _id: { type: Number },
   username: { type: String, required: true },
   bots: { type: Array, default: [{ name: "test" }] },
-});
+})
 
-let user = User.find({ _id: 1 });
+let user = User.find({ _id: 1 })
 
-if (!user) user = User.create({ _id: 1, username: "lennart" }).save();
+if (!user) user = User.create({ _id: 1, username: "lennart" }).save()
 
-console.log(user);
+console.log(user)
 // {
 //   data: { _id: 1, username: "lennart", bots: [ { name: "test" } ] },
 //   update: [Function: update],
