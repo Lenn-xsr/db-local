@@ -36,6 +36,12 @@ console.log(user)
 // }
 ```
 
+## TO-DO
+
+- [ ] Make model creation more dynamic and recursive;
+- [ ] Replace Array Database Base to Object;
+- [ ] Make it possible to create collections ( After completing the above update );
+
 ## Contributing
 
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
