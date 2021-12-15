@@ -1,4 +1,4 @@
-const { writeFileSync } = require("fs")
+import { writeFileSync } from 'fs'
 
 const verify = (obj, schema) => {
   const defined = {}
@@ -18,7 +18,7 @@ const verify = (obj, schema) => {
       )
     }
 
-    if (typeof obj[key] !== "object")
+    if (typeof obj[key] !== 'object')
       defined[key] = obj[key] !== undefined ? type(obj[key]) : type()
     else if (obj[key])
       defined[key] = Object.entries(obj[key])[0]
@@ -53,4 +53,4 @@ const save = (path, content) => {
   writeFileSync(path, JSON.stringify(content))
 }
 
-module.exports = { concat, verify, save, read }
+export { concat, verify, save, read }
