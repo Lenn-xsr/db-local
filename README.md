@@ -30,37 +30,37 @@ Example Usage
 ---
 
 ```js
-const dbLocal = require("./lib");
-const { Schema } = new dbLocal({ path: "./databases" });
+const dbLocal = require("./lib")
+const { Schema } = new dbLocal({ path: "./databases" })
 
 const User = Schema("User", {
   _id: { type: Number, required: true },
   username: { type: String, default: "Rick" },
   bag: {
-    weapons: { type: Array },
-  },
-});
+    weapons: { type: Array }
+  }
+})
 
 // Simple verification for creating/editing a document
 
-let user = User.find({ _id: 1 });
+let user = User.find({ _id: 1 })
 
 if (!user)
   user = User.create({
     _id: 1,
     username: "Lennart",
-    bag: { weapons: ["bow", "katana"] },
-  }).save();
+    bag: { weapons: ["bow", "katana"] }
+  }).save()
 
-console.log(user); // { _id: 1, username: 'Lennart', bag: { weapons: [ 'bow', 'katana' ] } ]
+console.log(user) // { _id: 1, username: 'Lennart', bag: { weapons: [ 'bow', 'katana' ] } }
 
 // Updating User
 
-user.update({ username: "Roger" });
+user.update({ username: "Roger" })
 // or
-user.username = "Roger";
+user.username = "Roger"
 
-console.log(user.save()); // { _id: 1, username: 'Roger', bag: { weapons: [ 'bow', 'katana' ] } ]
+console.log(user.save()) // { _id: 1, username: 'Roger', bag: { weapons: [ 'bow', 'katana' ] } }
 ```
 
 TO-DO
