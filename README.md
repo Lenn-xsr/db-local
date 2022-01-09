@@ -1,53 +1,84 @@
-# db-local [![npm](https://img.shields.io/npm/v/db-local.svg?maxAge=3600)](https://www.npmjs.com/package/db-local) [![npm](https://img.shields.io/npm/dm/db-local.svg?maxAge=3600)](https://www.npmjs.com/package/db-local) [![npm](https://img.shields.io/npm/l/db-local.svg?maxAge=3600)](https://www.npmjs.com/package/db-local)
+<div align="center">
+	<h1>DB-Local</h1>
+	<p>
+		<a href="https://www.npmjs.com/package/db-local"><img src="https://img.shields.io/npm/v/db-local.svg?color=3884FF&label=npm" alt="NPM version" /></a>
+	<a href="https://www.npmjs.com/package/db-local"><img src="https://img.shields.io/npm/dt/db-local.svg?color=3884FF" alt="NPM downloads" /></a>
+	<a href="https://www.npmjs.com/package/db-local"><img src="https://img.shields.io/badge/dependencies-0-brightgreen?color=3884FF" alt="Dependencies" /></a>
+	</p>
+	<p>
+		<a href="https://www.buymeacoffee.com/lenxsr" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-blue.png" alt="Buy Me A Coffee" height="41" width="174"></a>
+	</p>
+	<br><br>
+</div>
 
-Local database using JSON to store data.
+A local database for small to medium projects, that uses schema standardization and JSON to store data.
 
-- **[Documentation](https://db-local.gitbook.io/docs/)**
-- **[NPM Package](https://www.npmjs.com/package/db-local)**
+- **[Documentation](https://db-local.gitbook.io/docs/starting)**
 
-## Installation
+- **[NPM Package](https://npmjs.com/package/db-local)**
 
-```bash
+Installation
+
+---
+
+```
 npm install db-local
 ```
 
-## How to use
+Example Usage
+
+---
 
 ```js
-const dbLocal = require("db-local")
-const { Schema } = new dbLocal({ path: "./databases" })
+const dbLocal = require("./lib");
+const { Schema } = new dbLocal({ path: "./databases" });
 
 const User = Schema("User", {
-  _id: { type: Number },
-  username: { type: String, required: true },
-  bots: { type: Array, default: [{ name: "test" }] },
-})
+  _id: { type: Number, required: true },
+  username: { type: String, default: "Rick" },
+  bag: {
+    weapons: { type: Array },
+  },
+});
 
-let user = User.find({ _id: 1 })
+// Simple verification for creating/editing a document
 
-if (!user) user = User.create({ _id: 1, username: "lennart" }).save()
+let user = User.find({ _id: 1 });
 
-console.log(user)
-// {
-//   data: { _id: 1, username: "lennart", bots: [ { name: "test" } ] },
-//   update: [Function: update],
-//   remove: [Function: remove],
-//   save: [Function: save]
-// }
+if (!user)
+  user = User.create({
+    _id: 1,
+    username: "Lennart",
+    bag: { weapons: ["bow", "katana"] },
+  }).save();
+
+console.log(user); // { _id: 1, username: 'Lennart', bag: { weapons: [ 'bow', 'katana' ] } ]
+
+// Updating User
+
+user.update({ username: "Roger" });
+// or
+user.username = "Roger";
+
+console.log(user.save()); // { _id: 1, username: 'Roger', bag: { weapons: [ 'bow', 'katana' ] } ]
 ```
 
-## TO-DO
+TO-DO
 
-- [ ] Make model creation more dynamic and recursive;
+- [x] Make model creation more dynamic and recursive;
 - [ ] Replace Array Database Base to Object;
 - [ ] Make it possible to create collections ( After completing the above update );
 
-## Contributing
+Contributing
 
-Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+---
 
-Please make sure to update tests as appropriate.
+Before [creating an issue](https://github.com/Lenn-xsr/db-local/issues), please ensure that it hasn't already been reported or suggested.
 
-## License
+When [submitting a new pull request](https://github.com/Lenn-xsr/db-local/pulls), please make sure the code style/format used is the same as the one used in the original code.
 
-[MIT](https://choosealicense.com/licenses/mit/)
+License
+
+---
+
+Refer to the [MIT](https://choosealicense.com/licenses/mit/) file.
