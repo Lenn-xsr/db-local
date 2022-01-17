@@ -65,6 +65,12 @@ user.username = "Roger";
 console.log(user.save()); // { _id: 1, username: 'Roger', tag: "Lennart#123", bag: { weapons: [ 'bow', 'katana' ] } }
 ```
 
+TO-DO
+
+- [x] Make model creation more dynamic and recursive;
+- [x] Replace Array Database Base to Object;
+- [ ] Make it possible to create collections ( After completing the above update );
+
 Contributing
 
 ---
