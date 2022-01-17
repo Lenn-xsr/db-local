@@ -30,12 +30,13 @@ Example Usage
 ---
 
 ```js
-const dbLocal = require("./lib");
+const dbLocal = require("db-local");
 const { Schema } = new dbLocal({ path: "./databases" });
 
 const User = Schema("User", {
   _id: { type: Number, required: true },
   username: { type: String, default: "Rick" },
+  tag: String,
   bag: {
     weapons: { type: Array },
   },
@@ -49,10 +50,11 @@ if (!user)
   user = User.create({
     _id: 1,
     username: "Lennart",
+    tag: "Lennart#123",
     bag: { weapons: ["bow", "katana"] },
   }).save();
 
-console.log(user); // { _id: 1, username: 'Lennart', bag: { weapons: [ 'bow', 'katana' ] } ]
+console.log(user); // { _id: 1, username: 'Lennart', tag: "Lennart#123" bag: { weapons: [ 'bow', 'katana' ] } }
 
 // Updating User
 
@@ -60,14 +62,8 @@ user.update({ username: "Roger" });
 // or
 user.username = "Roger";
 
-console.log(user.save()); // { _id: 1, username: 'Roger', bag: { weapons: [ 'bow', 'katana' ] } ]
+console.log(user.save()); // { _id: 1, username: 'Roger', tag: "Lennart#123", bag: { weapons: [ 'bow', 'katana' ] } }
 ```
-
-TO-DO
-
-- [x] Make model creation more dynamic and recursive;
-- [ ] Replace Array Database Base to Object;
-- [ ] Make it possible to create collections ( After completing the above update );
 
 Contributing
 
