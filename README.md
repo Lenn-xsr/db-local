@@ -58,10 +58,11 @@ console.log(user); // { _id: 1, username: 'Lennart', tag: "Lennart#123" bag: { w
 
 // Updating User
 
-user.update({ username: "Roger" });
-// or
-user.username = "Roger";
+user.update({ username: "Roger" }).save(); // { _id: 1, username: 'Roger', tag: "Lennart#123", bag: { weapons: [ 'bow', 'katana' ] } }
 
+// or
+
+user.username = "Roger";
 console.log(user.save()); // { _id: 1, username: 'Roger', tag: "Lennart#123", bag: { weapons: [ 'bow', 'katana' ] } }
 ```
 
