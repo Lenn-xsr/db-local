@@ -13,7 +13,7 @@
 
 A local database for small to medium projects, that uses schema standardization and JSON to store data.
 
-- **[Documentation](https://db-local.gitbook.io/docs/starting)**
+- **[Documentation](https://lenn.gitbook.io/db-local/starting)**
 
 - **[NPM Package](https://npmjs.com/package/db-local)**
 
