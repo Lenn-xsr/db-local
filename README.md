@@ -25,6 +25,75 @@ Installation
 npm install db-local
 ```
 
+Creating database and schemas
+
+---
+
+```js
+const dbLocal = require("db-local");
+const { Schema } = new dbLocal({ path: "./databases" });
+
+const User = Schema("User", {
+  _id: { type: Number, required: true },
+  username: { type: String, default: "Customer" },
+  bag: {
+    weapons: { type: Array },
+  },
+});
+```
+
+Creating Data
+
+---
+
+```js
+const user = User.create({
+  _id: 1,
+  username: "Lennart",
+  tag: "Lennart#123",
+  bag: { weapons: ["bow", "katana"] },
+});
+
+user.save(); // Always run the "save" function after creating or editing a user
+```
+
+Updating Data
+
+---
+
+```js
+user.update({ username: "Roger" });
+// or
+user.username = "Roger";
+
+user.save();
+```
+
+Searching data
+
+---
+
+```js
+User.find((user) => user.bag.weapons.length >= 2); // [ { _id: 1, username: 'Customer', bag: { weapons: [ 'bow', 'katana' ] } }, { _id: 2, username: 'Customer 2', bag: { weapons: [ 'bow', 'katana', 'javascript' ] } } ]
+User.find({ _id: 1 }); // { _id: 1, username: 'Customer', bag: { weapons: [ 'bow', 'katana' ] } }
+User.find(1); // { _id: 1, username: 'Customer', bag: { weapons: [ 'bow', 'katana' ] } }
+```
+
+Deleting data
+
+---
+
+```js
+User.remove((user) => user.bag.weapons.length >= 2); // This function example removes multiple objects at once, be careful with usage.
+User.remove({ _id: 1 });
+User.remove(1);
+```
+
+###
+
+## License
+
+[MIT](
 Example Usage
 
 ---
@@ -42,8 +111,6 @@ const User = Schema("User", {
   },
 });
 
-// Simple verification for creating/editing a document
-
 let user = User.find({ _id: 1 });
 
 if (!user)
@@ -56,13 +123,7 @@ if (!user)
 
 console.log(user); // { _id: 1, username: 'Lennart', tag: "Lennart#123" bag: { weapons: [ 'bow', 'katana' ] } }
 
-// Updating User
-
-user.update({ username: "Roger" });
-// or
-user.username = "Roger";
-
-console.log(user.save()); // { _id: 1, username: 'Roger', tag: "Lennart#123", bag: { weapons: [ 'bow', 'katana' ] } }
+user.update({ username: "Roger" }).save(); // { _id: 1, username: 'Roger', tag: "Lennart#123", bag: { weapons: [ 'bow', 'katana' ] } }
 ```
 
 TO-DO
