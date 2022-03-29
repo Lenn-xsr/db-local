@@ -93,7 +93,6 @@ User.remove(1);
 
 ## License
 
-[MIT](
 Example Usage
 
 ---
