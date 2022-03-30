@@ -113,6 +113,36 @@ User.find({
 
 In this example we use the "Creators" schema as `$ref`, looking for `_id` 2 in it.
 
+To use the find base data, use `$data`, it returns the base value.
+The `$data` can only be used in the `$id` field, for that, the `$id` can be an object with `$data` inside or just a string, starting with `$data`
+
+We use an object reference system, so if you want to access an object, pass the path inside the string, for example:
+
+```js
+const $data = {
+  a: {
+    b: {
+      c: 22,
+      d: [1, 2, 3],
+    },
+  },
+};
+
+("$data.a.b.d.1"); // 2
+("$data.a.b.c"); // 22
+```
+
+### Using the property $data
+
+```js
+User.find({
+  _id: 1, // find base
+  creator: { $ref: "Creators", $id: { $data: "creatorId" } }
+  // or
+  creator: { $ref: "Creators", $id: "$data.creatorId" }
+})
+```
+
 ### Deleting data
 
 ---
