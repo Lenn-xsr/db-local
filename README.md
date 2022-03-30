@@ -109,6 +109,11 @@ User.find({
   _id: 1,
   creator: { $ref: "Creators", $id: 1 },
 }); // { _id: 1, username: 'Customer', bag: { weapons: [ 'bow', 'katana' ] }, creator: { _id: 2, name: 'Lennart' } }
+
+// To get several at once, just don't pass a start _id
+User.find({
+  creator: { $ref: "Creators", $id: "$data.creatorId" },
+});
 ```
 
 In this example we use the "Creators" schema as `$ref`, looking for `_id` 2 in it.
@@ -128,8 +133,8 @@ const $data = {
   },
 };
 
-("$data.a.b.d.1"); // 2
-("$data.a.b.c"); // 22
+"$data.a.b.d.1" // 2
+"$data.a.b.c" // 22
 ```
 
 ### Using the property $data
