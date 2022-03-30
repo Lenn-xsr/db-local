@@ -17,7 +17,7 @@ A local database for small to medium projects, that uses schema standardization 
 
 - **[NPM Package](https://npmjs.com/package/db-local)**
 
-Installation
+## Installation
 
 ---
 
@@ -25,13 +25,18 @@ Installation
 npm install db-local
 ```
 
-Creating database and schemas
+### Creating database and schemas
 
 ---
 
 ```js
 const dbLocal = require("db-local");
 const { Schema } = new dbLocal({ path: "./databases" });
+
+const Creators = Schema("Creators", {
+  _id: { type: Number, required: true },
+  name: { type: String, default: "Customer" },
+});
 
 const User = Schema("User", {
   _id: { type: Number, required: true },
@@ -42,7 +47,7 @@ const User = Schema("User", {
 });
 ```
 
-Creating Data
+### Creating Data
 
 ---
 
@@ -57,7 +62,7 @@ const user = User.create({
 user.save(); // Always run the "save" function after creating or editing a user
 ```
 
-Updating Data
+### Updating Data
 
 ---
 
@@ -69,7 +74,7 @@ user.username = "Roger";
 user.save();
 ```
 
-Searching data
+### Searching data
 
 ---
 
@@ -79,7 +84,36 @@ User.find({ _id: 1 }); // { _id: 1, username: 'Customer', bag: { weapons: [ 'bow
 User.find(1); // { _id: 1, username: 'Customer', bag: { weapons: [ 'bow', 'katana' ] } }
 ```
 
-Deleting data
+### Searching data with other Schema references
+
+---
+
+The reference documents resemble the following document:
+
+```js
+{ "$ref" : <value>, "$id" : <value> }
+```
+
+> $ref
+>    The `$ref` field holds the name of the Schema where the referenced document resides.
+>
+> $id
+>    The `$id` field contains the value of the \_id field in the referenced document.
+
+#
+
+#### Example
+
+```js
+User.find({
+  _id: 1,
+  creator: { $ref: "Creators", $id: 1 },
+}); // { _id: 1, username: 'Customer', bag: { weapons: [ 'bow', 'katana' ] }, creator: { _id: 2, name: 'Lennart' } }
+```
+
+In this example we use the "Creators" schema as `$ref`, looking for `_id` 2 in it.
+
+### Deleting data
 
 ---
 
@@ -91,9 +125,7 @@ User.remove(1);
 
 ###
 
-## License
-
-Example Usage
+### Example Usage
 
 ---
 
@@ -125,13 +157,13 @@ console.log(user); // { _id: 1, username: 'Lennart', tag: "Lennart#123" bag: { w
 user.update({ username: "Roger" }).save(); // { _id: 1, username: 'Roger', tag: "Lennart#123", bag: { weapons: [ 'bow', 'katana' ] } }
 ```
 
-TO-DO
+## TO-DO
 
 - [x] Make model creation more dynamic and recursive;
 - [x] Replace Array Database Base to Object;
 - [ ] Make it possible to create collections ( After completing the above update );
 
-Contributing
+## Contributing
 
 ---
 
@@ -139,7 +171,7 @@ Before [creating an issue](https://github.com/Lenn-xsr/db-local/issues), please 
 
 When [submitting a new pull request](https://github.com/Lenn-xsr/db-local/pulls), please make sure the code style/format used is the same as the one used in the original code.
 
-License
+## License
 
 ---
 
