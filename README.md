@@ -199,7 +199,7 @@ user.update({ username: "Roger" }).save(); // { _id: 1, username: 'Roger', tag: 
 ## TO-DO
 
 - [x] Make model creation more dynamic and recursive;
-- [ ] Replace Array Database Base to Object;
+- [ ] Replace array to object database;
 - [ ] Make it possible to create collections ( After completing the above update );
 
 ## Contributing
