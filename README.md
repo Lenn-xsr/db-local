@@ -105,10 +105,16 @@ The reference documents resemble the following document:
 #### Example
 
 ```js
+// Normal
 User.find({
   _id: 1,
   creator: { $ref: "Creators", $id: 1 },
 }); // { _id: 1, username: 'Customer', bag: { weapons: [ 'bow', 'katana' ] }, creator: { _id: 2, name: 'Lennart' } }
+
+// With conditional
+User.find((user) => user.bag.weapons.length > 2, {
+  creator: { $ref: "Creators", $id: "$data.creatorId" },
+});
 
 // To get several at once, just don't pass a start _id
 User.find({
@@ -133,8 +139,8 @@ const $data = {
   },
 };
 
-"$data.a.b.d.1" // 2
-"$data.a.b.c" // 22
+("$data.a.b.d.1"); // 2
+("$data.a.b.c"); // 22
 ```
 
 ### Using the property $data
@@ -157,8 +163,6 @@ User.remove((user) => user.bag.weapons.length >= 2); // This function example re
 User.remove({ _id: 1 });
 User.remove(1);
 ```
-
-###
 
 ### Example Usage
 
