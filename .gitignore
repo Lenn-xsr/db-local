@@ -4,6 +4,7 @@ yarn.lock
 package-lock.json
 
 /databases
+test.js
 
 # Log files
 npm-debug.log*
