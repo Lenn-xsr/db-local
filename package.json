@@ -1,6 +1,6 @@
 {
   "name": "db-local",
-  "version": "1.6.8",
+  "version": "2.7.8",
   "description": "A local database for small to medium projects, that uses schema standardization and JSON to store data.",
   "license": "MIT",
   "author": "Lennart",
@@ -14,10 +14,11 @@
     "local",
     "db",
     "database",
+    "json database",
+    "schema",
     "json",
     "schema",
-    "mongoose",
-    "mongoose style"
+    "mongoose"
   ],
   "bugs": {
     "url": "https://github.com/lenn-xsr/db-local/issues"
