@@ -1,14 +1,14 @@
 {
   "name": "db-local",
-  "version": "2.7.8",
+  "version": "2.8.9",
   "description": "A local database for small to medium projects, that uses schema standardization and JSON to store data.",
   "license": "MIT",
   "author": "Lennart",
   "main": "./lib/index.js",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/lenn-xsr/db-local.git"
+  "engines": {
+    "node": ">=14.0.0"
   },
+  "homepage": "https://github.com/lenn-xsr/db-local#readme",
   "keywords": [
     "db-local",
     "local",
@@ -23,5 +23,8 @@
   "bugs": {
     "url": "https://github.com/lenn-xsr/db-local/issues"
   },
-  "homepage": "https://github.com/lenn-xsr/db-local#readme"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lenn-xsr/db-local.git"
+  }
 }
