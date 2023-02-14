@@ -1,6 +1,6 @@
 {
   "name": "db-local",
-  "version": "2.8.9",
+  "version": "2.9.0",
   "description": "A local database for small to medium projects, that uses schema standardization and JSON to store data.",
   "license": "MIT",
   "author": "Lennart",
