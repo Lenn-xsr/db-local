@@ -56,9 +56,14 @@ const user = User.create({
   bag: { weapons: ["bow", "katana"] }
 }).save();
 
-User.find(user => user.bag.weapons.length >= 2); // [ { _id: 1, username: 'Customer', bag: { weapons: [ 'bow', 'katana' ] } ]
-User.find({ _id: 1 }); // { _id: 1, username: 'Customer', bag: { weapons: [ 'bow', 'katana' ] } }
-User.find(1); // { _id: 1, username: 'Customer', bag: { weapons: [ 'bow', 'katana' ] } }
+User.find(user => user.bag.weapons.length >= 2); // Array(1)
+User.find({ _id: 1 }); // Array(1)
+User.find(1); // Array(1)
+
+// Ways to get only one document
+
+User.findOne(1); // Object
+User.findOne({ _id: 1, $limit 1 }); // Object
 
 user.update({ username: "Roger" });
 user.username = "Roger"; // same as above
